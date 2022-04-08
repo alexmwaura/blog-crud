@@ -66,7 +66,7 @@ const AddCommentForm = (props) => {
             placeholder='some message'
           />
           {errors.message && touched.message && (
-            <Tag style={tagStyle}>{errors.description}</Tag>
+            <Tag style={tagStyle}>{errors.message}</Tag>
           )}
 
           <Button

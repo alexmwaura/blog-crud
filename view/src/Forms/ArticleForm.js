@@ -13,10 +13,10 @@ const AddArticleForm = (props) => {
       validate={(values) => {
         const errors = {};
         if (!values.title) {
-          errors.firstName = 'Title is Required';
+          errors.title = 'Title is Required';
         }
         if (!values.description) {
-          errors.lastName = 'Description is Required';
+          errors.description = 'Description is Required';
         }
         return errors;
       }}
