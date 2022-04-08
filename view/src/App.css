@@ -71,15 +71,9 @@ p {
   margin-bottom: 20px;
 }
 
-.accordion {
-  background-color: #eee;
-  color: #444;
+.add-comment {
   cursor: pointer;
-  padding: 18px;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
+  text-decoration: underline;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -151,7 +145,7 @@ p {
 
 .container-form label,
 input,
-button,
+.button,
 textarea {
   display: block;
   width: 100%;
