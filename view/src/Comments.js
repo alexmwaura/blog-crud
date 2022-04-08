@@ -5,7 +5,7 @@ function Comments(props) {
       <div className='comments-container'>
         <details>
           <summary>
-            <div className='comments-header'>{comments.length} Replies</div>
+            <div className='comments-header'>{comments.length} Comments</div>
           </summary>
           {comments.map((comment) => (
             <div className='comment-thread' key={comment.id}>
