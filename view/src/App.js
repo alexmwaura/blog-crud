@@ -4,6 +4,7 @@ import { getArticles } from './client';
 import Comments from './Comments';
 import moment from 'moment';
 import axios from 'axios';
+import PostArticle from './PostArticle'
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -61,6 +62,9 @@ class App extends Component {
                 />
               </div>
             ))}
+          </div>
+          <div className='footer'>
+            <PostArticle/>
           </div>
         </>
       );
