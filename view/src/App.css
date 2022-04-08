@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text&display=swap');
+@import '~antd/dist/antd.css';
+
+html {
+  background: linear-gradient(
+      to bottom right,
+      transparent 48%,
+      #efefef 48%,
+      #efefef 52%,
+      transparent 52%
+    ),
+    linear-gradient(
+      to bottom left,
+      transparent 48%,
+      #efefef 48%,
+      #efefef 52%,
+      transparent 52%
+    );
+  background-size: 0.25rem 0.25rem;
+}
+#container {
+  box-shadow: 0 0 50px rgb(221, 218, 218);
+  margin-bottom: 100px;
+}
+body {
+  width: 100%;
+  max-width: 700px;
+  font-family: sans-serif;
+  padding-bottom: 1vw;
+  margin: 0 auto;
+}
+
+h1 {
+  column-span: all;
+  background: #7e3030;
+  color: white;
+  font-size: 10vw;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+h2 {
+  background: black;
+  color: white;
+  font-size: 2rem;
+  column-span: all;
+  padding: 1rem;
+  width: fit-content;
+  max-width: 75%;
+  margin: 20px;
+}
+
+h3 {
+  color: rgb(126, 124, 124);
+  font-size: 20px;
+  max-width: 50%;
+}
+
+p {
+  line-height: 1.5rem;
+  padding: 0 1.5rem;
+  font-family: 'Noticia Text', serif;
+  margin-bottom: 20px;
+}
+
+.dateline {
+  opacity: 0.5;
+}
+#edit {
+  float: right;
+  margin-bottom: 20px;
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+#wrapper {
+  min-height: 0;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  margin: 50px 0;
+  transform: translate(-50%, 0);
+  background-color: #fefffa;
+  max-width: 100vw;
+  padding: 30px;
+}
+@media (max-width: 550px) {
+  #wrapper {
+    box-sizing: border-box;
+    transform: translate(0, 0);
+    max-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    left: 0;
+  }
+}
+
+.container-form {
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.brand-logo {
+  height: 100px;
+  width: 100px;
+  background: url('https://img.icons8.com/color/100/000000/twitter--v2.png');
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1da1f2;
+  letter-spacing: 1px;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.container-form label,
+input,
+button,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.container-form label {
+  margin-bottom: 4px;
+}
+
+.container-form label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+.container-form textarea,
+input::placeholder {
+  color: gray;
+}
+
+.container-form input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+}
+
+.container-form textarea {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.container-form button {
+  color: white;
+  margin-top: 20px;
+  background: #1da1f2;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+
+.container-form button:hover {
+  box-shadow: none;
+}
+
+.comment-thread {
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  padding: 2px;
+  margin: 2px;
+  border-radius: 5px;
+}
+.m-0 {
+  margin: 0;
+}
+
+/* Comment */
+.comments-container {
+  margin: 10px;
+  background-color: #fff;
+  /* border: 2px solid rgb(245, 245, 245); */
+  padding: 20px;
+}
+
+.comment {
+  position: relative;
+  margin: 20px auto;
+}
+.comment-heading {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 14px;
+}
+
+.comment-body {
+  margin-left: 10px;
+}
+.comment-info {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 10px;
+}
+.comment-author {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+  text-decoration: none;
+}
+.comment-author:hover {
+  text-decoration: underline;
+}
+.comments-header {
+  color: #55b0fa;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion {
+  color: rgb(124, 121, 121);
+  cursor: pointer;
+  padding: 18px;
+  margin-top: 10px;
+  /* width: 100%; */
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active,
+.accordion:hover {
+  background-color: #1da1f2;
+  color: #ecf0f3;
+}
+
+.article {
+  border-bottom: 20px solid black;
+}
+.comments {
+  padding: 10px;
+  align-items: left;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  /* left: 0; */
+  right: 0;
+  background: rgba(240, 240, 240, 0.9);
+  height: 5em;
+  padding: 1em;
+}
