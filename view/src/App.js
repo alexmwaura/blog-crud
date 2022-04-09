@@ -115,6 +115,8 @@ class App extends Component {
           />
         </>
       );
+    } else {
+      return <div className='loader'>Loading...</div>;
     }
   }
 }

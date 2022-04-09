@@ -72,6 +72,20 @@ body {
   font-family: sans-serif;
   padding-bottom: 1vw;
   margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+}
+@property --a {
+  initial-value: 0deg;
+  inherits: false;
+  syntax: '<angle>';
+}
+@property --h {
+  initial-value: 0;
+  inherits: false;
+  syntax: '<number>';
 }
 
 h1 {
@@ -138,19 +152,19 @@ p {
   padding: 10px;
   box-sizing: border-box;
   background: linear-gradient(
-    to bottom right,
-    transparent 0%,
-    #efefef 48%,
-    #efefef 52%,
-    transparent 52%
-  ),
-  linear-gradient(
-    to bottom left,
-    transparent 0%,
-    #efefef 48%,
-    #efefef 52%,
-    transparent 52%
-  );
+      to bottom right,
+      transparent 0%,
+      #efefef 48%,
+      #efefef 52%,
+      transparent 52%
+    ),
+    linear-gradient(
+      to bottom left,
+      transparent 0%,
+      #efefef 48%,
+      #efefef 52%,
+      transparent 52%
+    );
 }
 
 .inputs {
@@ -326,9 +340,7 @@ details > summary::-webkit-details-marker {
   margin-right: 10px;
 }
 
-
-
-.section{
+.section {
   position: relative;
   width: 100%;
   display: block;
@@ -339,17 +351,17 @@ details > summary::-webkit-details-marker {
   -ms-flex-pack: center;
   justify-content: center;
 }
-.full-height{
+.full-height {
   min-height: 100vh;
 }
 
-[type="checkbox"]:checked,
-[type="checkbox"]:not(:checked){
+[type='checkbox']:checked,
+[type='checkbox']:not(:checked) {
   position: absolute;
   left: -9999px;
 }
 .modal-btn:checked + label,
-.modal-btn:not(:checked) + label{
+.modal-btn:not(:checked) + label {
   position: relative;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -373,25 +385,25 @@ details > summary::-webkit-details-marker {
   justify-content: center;
   -ms-flex-pack: center;
   text-align: center;
-    -ms-flex-item-align: center;
-    align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   border: none;
   cursor: pointer;
   background-color: #7e3030;
   color: #ffeba7;
-  box-shadow: 0 12px 35px 0 rgba(16,39,112,.25);
+  box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
 }
-.modal-btn:not(:checked) + label:hover{
+.modal-btn:not(:checked) + label:hover {
   background-color: #351b1b;
   color: #e7eaf3;
 }
 .modal-btn:checked + label .uil,
-.modal-btn:not(:checked) + label .uil{
-	margin-left: 10px;
-	font-size: 18px;
+.modal-btn:not(:checked) + label .uil {
+  margin-left: 10px;
+  font-size: 18px;
 }
 .modal-btn:checked + label:after,
-.modal-btn:not(:checked) + label:after{
+.modal-btn:not(:checked) + label:after {
   position: fixed;
   top: 30px;
   right: 30px;
@@ -405,25 +417,26 @@ details > summary::-webkit-details-marker {
   background-color: #7e3030;
   color: #102770;
   font-family: 'unicons';
-  content: '\eac6'; 
-  box-shadow: 0 12px 25px 0 rgba(16,39,112,.25);
+  content: '\eac6';
+  box-shadow: 0 12px 25px 0 rgba(16, 39, 112, 0.25);
   transition: all 200ms linear;
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
 }
 .modal-btn:checked + label:hover:after,
-.modal-btn:not(:checked) + label:hover:after{
+.modal-btn:not(:checked) + label:hover:after {
   background-color: #7e3030;
   color: #ffeba7;
 }
-.modal-btn:checked + label:after{
-  transition: opacity 300ms 300ms ease, transform 300ms 300ms ease, background-color 250ms linear, color 250ms linear;
+.modal-btn:checked + label:after {
+  transition: opacity 300ms 300ms ease, transform 300ms 300ms ease,
+    background-color 250ms linear, color 250ms linear;
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
-.modal{
+.modal {
   position: fixed;
   display: block;
   display: -ms-flexbox;
@@ -439,12 +452,12 @@ details > summary::-webkit-details-marker {
   height: 100%;
   z-index: 100;
   overflow-x: hidden;
-  background-color: rgba(31,32,41,.75);
+  background-color: rgba(31, 32, 41, 0.75);
   pointer-events: none;
   opacity: 0;
   transition: opacity 250ms 700ms ease;
 }
-.modal-btn:checked ~ .modal{
+.modal-btn:checked ~ .modal {
   pointer-events: auto;
   opacity: 1;
   transition: all 300ms ease-in-out;
@@ -461,9 +474,9 @@ details > summary::-webkit-details-marker {
   overflow: hidden;
   padding-bottom: 20px;
   background-color: #fff;
-    -ms-flex-item-align: center;
-    align-self: center;
-    box-shadow: 0 12px 25px 0 rgba(199,175,189,.25);
+  -ms-flex-item-align: center;
+  align-self: center;
+  box-shadow: 0 12px 25px 0 rgba(199, 175, 189, 0.25);
   opacity: 0;
   transform: scale(0.6);
   transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
@@ -476,40 +489,83 @@ details > summary::-webkit-details-marker {
 .modal-wrap p {
   padding: 20px 30px 0 30px;
 }
-.modal-btn:checked ~ .modal .modal-wrap{
+.modal-btn:checked ~ .modal .modal-wrap {
   opacity: 1;
   transform: scale(1);
   transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
 }
 
-
 .logo {
-	position: absolute;
-	top: 25px;
-	left: 25px;
-	display: block;
-	z-index: 1000;
-	transition: all 250ms linear;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  display: block;
+  z-index: 1000;
+  transition: all 250ms linear;
 }
 .logo img {
-	height: 26px;
-	width: auto;
-	display: block;
-  	filter: brightness(10%);
-	transition: filter 250ms 700ms linear;
+  height: 26px;
+  width: auto;
+  display: block;
+  filter: brightness(10%);
+  transition: filter 250ms 700ms linear;
 }
 .modal-btn:checked ~ .logo img {
-  	filter: brightness(100%);
-	transition: all 250ms linear;
+  filter: brightness(100%);
+  transition: all 250ms linear;
 }
 
-
 @media screen and (max-width: 500px) {
-	.modal-wrap {
-		width: calc(100% - 40px);
-		padding-bottom: 15px;
-	}
-	.modal-wrap p {
-	  padding: 15px 20px 0 20px;
-	}
+  .modal-wrap {
+    width: calc(100% - 40px);
+    padding-bottom: 15px;
+  }
+  .modal-wrap p {
+    padding: 15px 20px 0 20px;
+  }
+}
+
+.loader {
+  padding: 2rem 4rem;
+  font-family: monospace;
+  font-weight: bold;
+  color: #fff;
+  border-style: solid;
+  border-width: 1vmin;
+  font-size: 2rem;
+  --charge: hsl(var(--h, 0), 80%, 50%);
+  -o-border-image: conic-gradient(
+      var(--charge) var(--a),
+      transparent calc(var(--a) + 0.5deg)
+    )
+    30;
+  border-image: conic-gradient(
+      var(--charge) var(--a),
+      transparent calc(var(--a) + 0.5deg)
+    )
+    30;
+  -webkit-animation: load 2s infinite ease-in-out;
+  animation: load 2s infinite ease-in-out;
+}
+@-webkit-keyframes load {
+  0%,
+  10% {
+    --a: 0deg;
+    --h: 0;
+  }
+  100% {
+    --a: 360deg;
+    --h: 100;
+  }
+}
+@keyframes load {
+  0%,
+  10% {
+    --a: 0deg;
+    --h: 0;
+  }
+  100% {
+    --a: 360deg;
+    --h: 100;
+  }
 }
