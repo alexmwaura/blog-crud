@@ -76,7 +76,6 @@ class App extends Component {
         <>
           <div id='container'>
             <h1 id='headline'>Blog Life</h1>
-
             <Article
               articles={articles}
               closeEdit={this.closeEdit}
