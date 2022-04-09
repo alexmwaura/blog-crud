@@ -20,7 +20,7 @@ const AddArticleForm = (props) => {
         }
         return errors;
       }}
-      onSubmit={(article, { setSubmitting }) => {
+      onSubmit={(article, { setSubmitting, resetForm }) => {
         addArticle(article)
           .then(() => {
             props.onSuccess();
@@ -30,6 +30,7 @@ const AddArticleForm = (props) => {
           })
           .finally(() => {
             setSubmitting(false);
+            resetForm()
           });
       }}
     >
@@ -43,9 +44,10 @@ const AddArticleForm = (props) => {
         isSubmitting,
         submitForm,
         isValid,
+        resetForm
         /* and other goodies */
       }) => (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='container-form'>
           <Input
             style={inputStyle}
             name='title'
@@ -58,6 +60,8 @@ const AddArticleForm = (props) => {
             <Tag style={tagStyle}>{errors.title}</Tag>
           )}
           <TextArea
+            cols='100'
+            rows='12'
             style={inputStyle}
             name='description'
             onChange={handleChange}
@@ -68,7 +72,7 @@ const AddArticleForm = (props) => {
           {errors.description && touched.description && (
             <Tag style={tagStyle}>{errors.description}</Tag>
           )}
-
+          <br />
           <Button
             type='submit'
             disabled={isSubmitting | (touched && !isValid)}
