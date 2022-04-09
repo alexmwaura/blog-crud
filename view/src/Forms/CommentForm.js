@@ -20,7 +20,7 @@ const AddCommentForm = (props) => {
         }
         return errors;
       }}
-      onSubmit={(comment, { setSubmitting }) => {
+      onSubmit={(comment, { setSubmitting, resetForm }) => {
         addComment(comment)
           .then(() => {
             props.onSuccess();
@@ -30,6 +30,7 @@ const AddCommentForm = (props) => {
           })
           .finally(() => {
             setSubmitting(false);
+            resetForm()
           });
       }}
     >
@@ -43,6 +44,7 @@ const AddCommentForm = (props) => {
         isSubmitting,
         submitForm,
         isValid,
+        resetForm
         /* and other goodies */
       }) => (
         <form onSubmit={handleSubmit}>
@@ -58,6 +60,7 @@ const AddCommentForm = (props) => {
             <Tag style={tagStyle}>{errors.username}</Tag>
           )}
           <TextArea
+            rows='6'
             style={inputStyle}
             name='message'
             onChange={handleChange}
@@ -68,7 +71,7 @@ const AddCommentForm = (props) => {
           {errors.message && touched.message && (
             <Tag style={tagStyle}>{errors.message}</Tag>
           )}
-
+          <br />
           <Button
             type='submit'
             disabled={isSubmitting | (touched && !isValid)}
