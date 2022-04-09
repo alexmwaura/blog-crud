@@ -25,14 +25,14 @@ html {
   background: linear-gradient(
       to bottom right,
       transparent 0%,
-      #ffffff 48%,
-      #a7a5a5 100%,
+      #e2e1e1 48%,
+      #f1f1f1 100%,
       transparent 52%
     ),
     linear-gradient(
       to bottom left,
       transparent 0%,
-      #000000 48%,
+      #f8f8f8 48%,
       #adadad 100%,
       transparent 52%
     );
@@ -126,6 +126,7 @@ p {
   padding: 10px 16px;
   text-align: right;
   background: transparent;
+  border-top: none;
   border-radius: 0 0 2px 2px;
 }
 
