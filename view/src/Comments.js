@@ -30,7 +30,7 @@ function Comments(props) {
         ))}
       </details>
       <details>
-        <summary className='add-comment'>Add Comment</summary>
+        <summary className='add-comment'>Comment</summary>
         <div className='container-form'>
           <AddCommentForm
             articleId={props.articleId}
