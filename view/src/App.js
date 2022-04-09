@@ -1,13 +1,16 @@
 import './App.css';
 import { Component } from 'react';
-import { getArticles } from './client';
+import { deleteArticle, getArticles } from './client';
 import Comments from './Comments';
 import moment from 'moment';
 import axios from 'axios';
-import { Modal } from 'antd';
+import { Button, Modal, Popconfirm } from 'antd';
 import AddArticleForm from './Forms/ArticleForm';
 import { openNotification } from './Notification';
 import Footer from './Footer';
+import { EditOutlined, CloseOutlined, DeleteOutlined } from '@ant-design/icons';
+import EditArticleForm from './Forms/EditForm';
+import filterByDate from './lib/filterByDate';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -15,6 +18,8 @@ class App extends Component {
   state = {
     articles: null,
     isFetching: false,
+    openEdit: false,
+    articleId: '',
   };
 
   componentDidMount() {
@@ -31,22 +36,46 @@ class App extends Component {
     });
     getArticles()
       .then((res) => {
+        const articles = filterByDate(res);
+
         this.setState({
-          articles: res,
+          articles: articles.reverse(),
           isFetching: false,
         });
       })
       .catch((e) => {});
   };
 
+  handleEdit = (article) => {
+    this.setState({
+      openEdit: (state) => !state,
+      articleId: article.id,
+      article: article,
+    });
+  };
+
+  handleDelete = (id) => {
+    deleteArticle(id).then(() => {
+      openNotification('warning', 'article deleted successfully');
+      this.fetchArticles();
+    });
+  };
+
+  closeEdit = () => {
+    this.setState({
+      openEdit: (state) => !state,
+      articleId: '',
+    });
+  };
+
   openAddModal = () => this.setState({ isAddStudentModalVisible: true });
   closeAddModal = () => this.setState({ isAddStudentModalVisible: false });
 
   render() {
-    const { articles, isFetching, isAddStudentModalVisible, isError } =
+    const { articles, isAddStudentModalVisible, openEdit, articleId } =
       this.state;
 
-    if (articles) {
+    if (articles?.length > 0) {
       return (
         <>
           <div id='container'>
@@ -54,13 +83,59 @@ class App extends Component {
 
             {articles.map((article) => (
               <div key={article.id} className='article'>
-                <h2 id='subhead'>{article.title}</h2>
-                <p id='edit'>edit</p>
-                <p className='dateline'>
-                  Posted: {this.formatDate(article.updatedAt)}
-                </p>
-
-                <p>{article.description}</p>
+                <>
+                  {openEdit && article.id === articleId ? (
+                    <>
+                      <Button
+                        className='done_edit'
+                        type='submit'
+                        shape='circle'
+                        onClick={() => this.closeEdit()}
+                      >
+                        <CloseOutlined />
+                      </Button>
+                      <br />
+                      <EditArticleForm
+                        article={article}
+                        fetchArticles={this.fetchArticles}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h2 id='subhead'>{article.title}</h2>
+                      <p id='edit'>
+                        <Button
+                          shape='circle'
+                          size='midle'
+                          onClick={() => this.handleEdit(article)}
+                        >
+                          <EditOutlined />
+                        </Button>
+                        &nbsp;&nbsp;
+                        <Popconfirm
+                          title='Are you sure？'
+                          okText='Yes'
+                          cancelText='No'
+                          onConfirm={() => this.handleDelete(article.id)}
+                        >
+                          <Button
+                            shape='circle'
+                            size='midle'
+                            type='primary'
+                            danger
+                          >
+                            <DeleteOutlined />
+                          </Button>{' '}
+                        </Popconfirm>
+                      </p>
+                      <br />
+                      <p className='dateline'>
+                        last update: {this.formatDate(article.updatedAt)}
+                      </p>
+                      <p>{article.description}</p>
+                    </>
+                  )}
+                </>
                 <Comments
                   comments={article.comments}
                   formatDate={this.formatDate}
@@ -72,11 +147,48 @@ class App extends Component {
           </div>
           <div className='footer'>
             <Modal
-              title='Add new article'
               visible={isAddStudentModalVisible}
               onOk={this.closeAddModal}
               onCancel={this.closeAddModal}
               width={800}
+              okText='Done'
+              cancelText='Exit'
+            >
+              <AddArticleForm
+                onSuccess={() => {
+                  this.closeAddModal();
+                  this.fetchArticles();
+                  openNotification('success', 'article added', 200);
+                }}
+                onFailure={(err) => {
+                  const { message, httpStatus } = err.error;
+                  openNotification('error', message, httpStatus);
+                }}
+              />
+            </Modal>
+            <Footer handleAddArticle={this.openAddModal} />
+          </div>
+        </>
+      );
+    } if (articles?.length === 0) {
+      return (
+        <>
+          <div id='container'>
+            <h1 id='headline'>Blog Life</h1>
+            <h2 id='subhead'>No Data</h2>
+
+            <div className='article'>
+              <p>There is no article, Please Add an article</p>
+            </div>
+          </div>
+          <div className='footer'>
+            <Modal
+              visible={isAddStudentModalVisible}
+              onOk={this.closeAddModal}
+              onCancel={this.closeAddModal}
+              width={800}
+              okText='Done'
+              cancelText='Exit'
             >
               <AddArticleForm
                 onSuccess={() => {
