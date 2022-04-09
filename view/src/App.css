@@ -338,6 +338,7 @@ details > summary::-webkit-details-marker {
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   margin-right: 10px;
+  margin-top: 9px;
 }
 
 .section {
