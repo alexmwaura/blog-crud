@@ -8,7 +8,7 @@ import Footer from './Footer';
 import filterByDate from './lib/filterByDate';
 import Article from './Article';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'https://blog-lyf.herokuapp.com';
 
 class App extends Component {
   state = {
