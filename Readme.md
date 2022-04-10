@@ -1,32 +1,41 @@
-# BLOG CRUD APP
-
-## This a simple website with CRUD capabilities. It is built using NestJS and ReactJS
+## BLOG CRUD APP
+This a simple website with CRUD capabilities. It is built using NestJS and ReactJS
 ---
+
+### User Story
+
+- User is able to post a new blog with some title and description
+- User is able to read the blog
+- User is able to edit and update the blog
+- User is able to delete blog
+- Users are able to comment on blog
+
+## Get Started
 
 ```bash
 git clone git@github.com:alexmwaura/blog-crud.git
 ```
 
-## Start Backend
+## Backend services
 
-### Navigate to `/api`
+Navigate to `/api`
 ```
 cd api && npm install
 ```
-### Add postgresql database url as `DATABASE_URL` to `.env` file in `/api` directory
+Add postgresql database url as `DATABASE_URL` to `.env` file in `/api` directory
 ```
 DATABASE_URL=postgresql_url
 ```
-### To run the application use
+To run the application use
 ```
 npm run start:dev
 ```
 
-## Start Frontend
+## Frontend/client
 ```
 cd view && npm install
 ```
-### Add API Endpoint as `axios.default.baseUrl` to `view/src/App.js`
+Add API Endpoint as `axios.default.baseUrl` to `view/src/App.js`
 
 ```javascript
 
