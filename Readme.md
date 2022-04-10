@@ -56,6 +56,6 @@ class App extends Component{
 ```bash
 npm run start
 ```
-### Open app at `http://localhost:3000`
+Open app at `http://localhost:3000`
 
 
