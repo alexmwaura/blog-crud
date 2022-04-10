@@ -1,6 +1,9 @@
 ## BLOG CRUD APP
 This a simple website with CRUD capabilities. It is built using NestJS and ReactJS
 ---
+https://blog-crud-khaki.vercel.app/
+![](https://i.imgur.com/T0xjY3D.png)
+
 
 ### User Story
 
