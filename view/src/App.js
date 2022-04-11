@@ -87,6 +87,7 @@ class App extends Component {
               articleId={articleId}
             />
           </div>
+          
           <Footer
             handleAddArticle={this.openAddModal}
             isAddStudentModalVisible={isAddStudentModalVisible}
